@@ -6,7 +6,7 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   // IMPORTANT: set this to your real domain. It is used for the canonical URL,
   // social-share links, sitemap.xml and robots.txt.
-  site: "https://cts-gv.github.io/dj-site-V2/",
+  site: "https://cts-gv.github.io",
   // Use "/" for a custom domain. For https://<user>.github.io/<repo>/ use "/<repo>".
   base: "dj-site-V2",
   integrations: [react(), sitemap()],
