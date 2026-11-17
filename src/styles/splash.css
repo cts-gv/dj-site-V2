@@ -1,0 +1,377 @@
+.dj-splash *{box-sizing:border-box}
+.dj-splash{color-scheme:dark;--cyan:#a78bfa;--blue:#7c5cff;--violet:#ec4899;--ink:#000000;--panel:#14171e}
+.dj-splash{min-height:100%;background:var(--ink)}
+.dj-splash{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% 58%,#150f26 0%,#08060f 50%,#000000 100%);color:#f5f7fb;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;overflow-x:hidden}
+.dj-splash button{font:inherit}
+.dj-splash .splash{position:relative;isolation:isolate;min-height:100vh;padding:54px 24px 28px;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
+.dj-splash .ambient{position:absolute;z-index:-1;width:460px;height:460px;border-radius:50%;filter:blur(110px);opacity:.17;pointer-events:none}
+.dj-splash .ambient-one{background:#6366f1;top:24%;left:-230px}
+.dj-splash .ambient-two{background:#ec4899;right:-240px;top:36%}
+.dj-splash .intro{text-align:center;max-width:1020px;margin:0 auto 34px;animation:djs-rise .9s ease both}
+.dj-splash .eyebrow{display:flex;align-items:center;justify-content:center;gap:13px;color:#c4b5fd;font-size:10px;font-weight:700;letter-spacing:.34em;margin:0 0 17px}
+.dj-splash .eyebrow-line{width:30px;height:1px;background:linear-gradient(90deg,transparent,var(--cyan))}
+.dj-splash .eyebrow-line:last-child{transform:rotate(180deg)}
+.dj-splash .splash-title{font-family:"Oswald",Impact,sans-serif;font-size:clamp(30px,4.2vw,54px);font-weight:700;line-height:1.03;letter-spacing:.015em;text-transform:uppercase;margin:0 auto;max-width:960px;text-shadow:0 4px 30px #000}
+.dj-splash .splash-title span{color:var(--cyan);text-shadow:0 0 24px #a78bfa55}
+.dj-splash .tagline{margin:12px 0 22px;color:#e5e5e5;font-size:clamp(13px,1.6vw,17px);letter-spacing:.18em;text-transform:uppercase;font-weight:600}
+.dj-splash .entry-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.dj-splash .enter-button{min-width:184px;border:1px solid #5d5560;border-radius:4px;padding:13px 19px;color:#fff;background:#101013;letter-spacing:.07em;text-transform:uppercase;font-size:11px;font-weight:700;cursor:pointer;transition:transform .2s,border-color .2s,box-shadow .2s,background .2s}
+.dj-splash .enter-button:hover,.dj-splash .enter-button:focus-visible{transform:translateY(-2px);border-color:var(--cyan);box-shadow:0 0 24px #7c5cff45;outline:none}
+.dj-splash .enter-music{background:linear-gradient(110deg,#6d5cff,#c026d3);border-color:#a78bfa}
+.dj-splash .enter-quiet{background:#101013}
+.dj-splash .button-icon{font-size:17px;margin-right:8px;color:var(--cyan);vertical-align:-1px}
+.dj-splash .entry-status{min-height:14px;margin:10px 0 0;color:#9893ae;font-size:10px;letter-spacing:.16em;text-transform:uppercase}
+.dj-splash .console{width:min(1180px,100%);display:grid;grid-template-columns:minmax(0,1fr) 220px minmax(0,1fr);gap:10px;align-items:stretch;filter:drop-shadow(0 25px 45px #000b);animation:djs-rise 1s .12s ease both}
+.dj-splash .deck,.dj-splash .mixer{position:relative;min-width:0;border:1px solid #3d3b42;background:linear-gradient(145deg,#2b2a2f,#101013 55%,#222125);border-radius:9px;padding:15px;box-shadow:inset 0 1px #ffffff18,inset 0 -8px 20px #0008}
+.dj-splash .deck:before,.dj-splash .mixer:before{content:"";position:absolute;inset:5px;border:1px solid #ffffff0c;border-radius:5px;pointer-events:none}
+.dj-splash .deck-topline{display:flex;justify-content:space-between;align-items:center;color:#8a86a0;font-size:8px;font-weight:700;letter-spacing:.16em;margin:1px 3px 12px}
+.dj-splash .led{color:#e4e0f5;display:flex;align-items:center;gap:6px}
+.dj-splash .led i,.dj-splash .display-live i{width:6px;height:6px;border-radius:50%;background:#4cffb0;box-shadow:0 0 8px #4cffb0;display:inline-block}
+.dj-splash .track-screen{position:relative;overflow:hidden;padding:11px 12px 9px;background:linear-gradient(110deg,#0b0916,#150e24);border:1px solid #34295c;border-radius:3px;box-shadow:inset 0 0 18px #000b,0 0 12px #8b5cf622}
+.dj-splash .screen-heading{font-size:8px;letter-spacing:.18em;color:#aaa3c4;display:flex;align-items:center;gap:7px}
+.dj-splash .screen-dot{width:5px;height:5px;background:var(--cyan);border-radius:50%;box-shadow:0 0 8px var(--cyan)}
+.dj-splash .track-title{font-family:"Oswald",Impact,sans-serif;font-weight:700;font-size:clamp(15px,2vw,21px);letter-spacing:.07em;color:#f3f0ff;margin:5px 0 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dj-splash .track-artist{font-size:8px;color:#b6abd8;letter-spacing:.12em;margin-top:1px}
+.dj-splash .screen-bottom{display:flex;justify-content:space-between;color:#9d97b6;font-size:7px;letter-spacing:.12em;margin-top:11px}
+.dj-splash .screen-bottom small{font-size:6px;color:#c4b5fd}
+.dj-splash .screen-progress{height:2px;background:#251b40;margin-top:8px}
+.dj-splash .screen-progress span{display:block;width:67%;height:100%;background:linear-gradient(90deg,#7c5cff,#c4b5fd);box-shadow:0 0 8px #8b5cf6}
+.dj-splash .screen-progress .progress-alt{width:43%;margin-left:auto;background:linear-gradient(90deg,#ec4899,#f9a8d4)}
+.dj-splash .platter-wrap{display:grid;place-items:center;padding:14px 0 12px}
+.dj-splash .platter{width:min(100%,270px);aspect-ratio:1;border-radius:50%;position:relative;display:grid;place-items:center;background:repeating-radial-gradient(circle at center,#111318 0 2px,#252a31 2.5px 3px,#101216 3.5px 5px);border:8px solid #080a0d;box-shadow:0 0 0 2px #555d68,0 0 0 5px #161a20,0 10px 20px #000c,inset 0 0 25px #000}
+.dj-splash .platter:after{content:"";position:absolute;inset:7%;border-radius:50%;border:1px solid #ffffff12}
+.dj-splash .vinyl-grooves{position:absolute;inset:12%;border-radius:50%;border:1px solid #ffffff12;box-shadow:0 0 0 5px #ffffff05,0 0 0 10px #ffffff04,0 0 0 15px #ffffff04}
+.dj-splash .vinyl-label{position:relative;z-index:1;width:29%;aspect-ratio:1;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 25%,#c4b5fd,#8b5cf6 58%,#be185d);border:4px solid #0b0b0e;box-shadow:0 0 15px #8b5cf655;color:#1a0710}
+.dj-splash .vinyl-label span{font-size:7px;font-weight:800;letter-spacing:.2em}
+.dj-splash .vinyl-label b{font-family:"Oswald";font-size:clamp(24px,3vw,38px);line-height:.85}
+.dj-splash .vinyl-label small{font-size:6px;font-weight:800;letter-spacing:.18em;margin-top:3px}
+.dj-splash .tonearm{position:absolute;z-index:2;width:8px;height:38%;background:linear-gradient(90deg,#555,#dce4e9 48%,#525a66);border-radius:8px;right:16%;top:8%;transform:rotate(27deg);transform-origin:top center;box-shadow:0 0 5px #000}
+.dj-splash .tonearm:before{content:"";position:absolute;top:-8px;left:-5px;width:18px;height:18px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#d5dbe0,#424953 65%,#111)}
+.dj-splash .needle{position:absolute;bottom:-2px;left:-3px;width:14px;height:16px;background:linear-gradient(90deg,#1b222b,#c4d0d7,#303844);clip-path:polygon(20% 0,80% 0,100% 100%,0 100%)}
+.dj-splash .deck-footer{display:flex;justify-content:space-between;border-top:1px solid #ffffff12;padding:10px 2px 0;color:#8a86a0;font-size:7px;font-weight:700;letter-spacing:.13em}
+.dj-splash .mixer{padding:16px 13px;background:linear-gradient(145deg,#232227,#0b0b0e 55%,#1d1c21);display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center}
+.dj-splash .mixer-brand{font-family:"Oswald",Impact,sans-serif;font-size:clamp(25px,3vw,36px);font-weight:900;letter-spacing:.04em;color:#f4fbff;text-shadow:0 0 16px #a78bfa66;margin-top:10px}
+.dj-splash .mixer-brand span{color:var(--cyan)}
+.dj-splash .mixer-sub{font-size:6px;letter-spacing:.18em;color:#9893ae;margin-top:-5px}
+.dj-splash .mixer-display{width:100%;background:#08060f;border:1px solid #34295c;border-radius:3px;padding:10px 7px 8px;box-shadow:inset 0 0 14px #000}
+.dj-splash .display-top,.dj-splash .display-bottom{display:flex;justify-content:space-between;color:#9d97b6;font-size:6px;letter-spacing:.13em}
+.dj-splash .display-live{color:#c4b5fd}
+.dj-splash .display-live i{width:5px;height:5px}
+.dj-splash .visualizer{height:80px;display:flex;align-items:center;justify-content:center;gap:5px;overflow:hidden}
+.dj-splash .bars{height:100%;width:48%;display:flex;align-items:center;justify-content:center;gap:3px}
+.dj-splash .bars:before{content:"";width:100%;height:100%;background:repeating-linear-gradient(90deg,transparent 0 5px,#818cf8 5px 7px,transparent 7px 10px);mask-image:linear-gradient(0deg,transparent,#000 12%,#000 88%,transparent);opacity:.9;animation:djs-equalize .8s ease-in-out infinite alternate}
+.dj-splash .bars-b:before{background:repeating-linear-gradient(90deg,transparent 0 5px,#c084fc 5px 7px,transparent 7px 10px);animation-delay:-.45s;animation-duration:1.05s}
+.dj-splash .display-bottom{font-size:5px;color:#7f7a99}
+.dj-splash .mixer-controls{width:100%;padding:14px 4px 10px}
+.dj-splash .knob-row,.dj-splash .fader-row{display:flex;justify-content:space-around;align-items:center}
+.dj-splash .knob-row i{width:18px;height:18px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#7d8995,#252d37 55%,#090c11);border:1px solid #66717e;box-shadow:0 2px 3px #000}
+.dj-splash .fader-row{margin:11px 4px 12px;height:27px;background:repeating-linear-gradient(90deg,transparent 0 18px,#343e4b 19px 20px,transparent 21px 22px);border-bottom:1px solid #3c4756}
+.dj-splash .fader-row span{width:7px;height:20px;background:linear-gradient(90deg,#626d78,#d0d8dd,#4c5662);border-radius:2px;box-shadow:0 2px 4px #000}
+.dj-splash .mixer-lights{display:flex;justify-content:center;gap:4px}
+.dj-splash .mixer-lights i{height:4px;width:8px;border-radius:1px;background:#37e4a2;box-shadow:0 0 5px #37e4a2;animation:djs-blink 1s steps(2,end) infinite}
+.dj-splash .mixer-lights i:nth-child(3n){background:#e7c84f;box-shadow:0 0 5px #e7c84f;animation-delay:-.3s}
+.dj-splash .mixer-lights i:nth-child(4n){background:#a78bfa;box-shadow:0 0 5px #a78bfa;animation-delay:-.6s}
+.dj-splash .mixer-footer{font-size:6px;color:#8a86a0;letter-spacing:.2em;margin-bottom:3px}
+.dj-splash .page-footer{width:min(600px,90%);display:flex;align-items:center;justify-content:center;gap:13px;margin:22px auto 0;color:#8a86a0;font-size:8px;letter-spacing:.2em;font-weight:700}
+.dj-splash .page-footer>span:first-child{color:#e4e0f5}
+.dj-splash .footer-rule{height:1px;width:55px;background:linear-gradient(90deg,transparent,#5d4a45,transparent)}
+@keyframes djs-equalize{0%{transform:scaleY(.25);filter:brightness(.75)}25%{transform:scaleY(.85)}50%{transform:scaleY(.4)}75%{transform:scaleY(1)}100%{transform:scaleY(.55);filter:brightness(1.4)}}
+@keyframes djs-blink{0%,100%{opacity:.35}50%{opacity:1}}
+@keyframes djs-rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.dj-splash.quiet .bars:before,.dj-splash.quiet .mixer-lights i{animation-play-state:paused;opacity:.25}
+@keyframes djs-spin{to{transform:rotate(360deg)}}
+@media(max-width:800px){
+.dj-splash .splash{padding:38px 16px 22px}
+.dj-splash .intro{margin-bottom:24px}
+.dj-splash .console{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:9px}
+.dj-splash .mixer{grid-column:1/-1;grid-row:2;min-height:205px;display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:12px;align-items:center}
+.dj-splash .mixer-brand{font-size:29px}
+.dj-splash .mixer-sub{display:none}
+.dj-splash .mixer-display{grid-column:2;grid-row:1/3}
+.dj-splash .mixer-controls{grid-column:3;grid-row:1/3}
+.dj-splash .mixer-footer{display:none}
+.dj-splash .platter{width:min(100%,250px)}
+}
+@media(max-width:480px){
+.dj-splash .splash{padding:30px 12px 18px}
+.dj-splash .eyebrow{font-size:8px;letter-spacing:.2em;gap:8px}
+.dj-splash .eyebrow-line{width:18px}
+.dj-splash .splash-title{font-size:34px}
+.dj-splash .tagline{font-size:11px;letter-spacing:.12em}
+.dj-splash .entry-actions{gap:8px}
+.dj-splash .enter-button{min-width:0;flex:1;padding:12px 9px;font-size:9px}
+.dj-splash .console{gap:7px}
+.dj-splash .deck{padding:9px}
+.dj-splash .deck-topline{font-size:6px;letter-spacing:.08em}
+.dj-splash .track-screen{padding:8px 7px}
+.dj-splash .track-title{font-size:14px}
+.dj-splash .track-artist{font-size:6px}
+.dj-splash .screen-bottom{font-size:6px}
+.dj-splash .platter-wrap{padding:12px 0}
+.dj-splash .platter{border-width:5px}
+.dj-splash .deck-footer{font-size:5px;letter-spacing:.06em;gap:4px}
+.dj-splash .mixer{padding:10px;min-height:170px;gap:6px}
+.dj-splash .mixer-brand{font-size:24px}
+.dj-splash .mixer-display{padding:8px 5px}
+.dj-splash .visualizer{height:58px}
+.dj-splash .knob-row i{width:14px;height:14px}
+.dj-splash .fader-row{margin:8px 2px}
+.dj-splash .mixer-lights{gap:2px}
+.dj-splash .mixer-lights i{width:5px}
+.dj-splash .page-footer{font-size:6px;letter-spacing:.13em;gap:8px;margin-top:16px}
+}
+@media(prefers-reduced-motion:reduce){
+.dj-splash *,.dj-splash *:before,.dj-splash *:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}
+}
+
+/* ===================================================================
+   Overrides: full-screen overlay + site-matching buttons + glow
+   =================================================================== */
+.dj-splash{position:fixed;inset:0;z-index:100;overflow-y:auto;overflow-x:hidden;
+  background:radial-gradient(ellipse at 50% 58%,#150f26 0%,#08060f 52%,#000 100%);
+  color:#fff;transition:opacity .85s ease,transform .85s ease,filter .85s ease}
+.dj-splash.leaving{opacity:0;transform:scale(1.04);filter:blur(6px);pointer-events:none}
+.dj-splash .splash{min-height:100%}
+
+/* brand badge — same look as the navbar logo */
+.dj-splash .brand-badge{display:flex;align-items:center;justify-content:center;margin:0 auto 18px;width:64px;height:64px;border-radius:50%;
+  background:linear-gradient(135deg,#7c5cff,#ec4899);box-shadow:0 10px 30px #8b5cf666}
+.dj-splash .brand-badge svg{width:36px;height:36px}
+
+.dj-splash .eyebrow{color:#c4b5fd;font-size:11px;letter-spacing:.3em}
+.dj-splash .splash-title{font-size:clamp(26px,3.6vw,46px);line-height:1.1;letter-spacing:.02em}
+.dj-splash .splash-title span{background:linear-gradient(90deg,#a78bfa,#ec4899);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;filter:drop-shadow(0 0 18px #8b5cf666)}
+.dj-splash .tagline{color:#e5e5e5;font-weight:300;letter-spacing:.2em}
+.dj-splash .eyebrow-line{background:linear-gradient(90deg,transparent,#a78bfa)}
+
+/* Buttons: pill-shaped like the main site */
+.dj-splash .entry-actions{gap:16px;align-items:center}
+.dj-splash .enter-button{border-radius:999px;font-family:inherit;font-size:13px;letter-spacing:.1em;padding:15px 30px;min-width:210px}
+.dj-splash .enter-quiet{background:rgba(255,255,255,.05);border:2px solid rgba(255,255,255,.3);backdrop-filter:blur(4px);color:#fff}
+.dj-splash .enter-quiet:hover,.dj-splash .enter-quiet:focus-visible{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.5);box-shadow:none;transform:translateY(-2px)}
+.dj-splash .enter-quiet .button-icon{color:#fff}
+
+/* ✨ The attention-grabber */
+.dj-splash .enter-music{position:relative;border:0;color:#fff;font-weight:800;font-size:14px;padding:17px 36px;min-width:240px;
+  background:linear-gradient(100deg,#6d5cff,#ec4899,#6d5cff);background-size:220% 100%;
+  box-shadow:0 0 26px 6px rgba(124,92,255,.8),0 0 60px 14px rgba(236,72,153,.5);
+  animation:djs-glow 1.9s ease-in-out infinite,djs-shift 4s linear infinite}
+.dj-splash .enter-music .button-icon{color:#fff;font-size:19px;display:inline-block;animation:djs-note 1.9s ease-in-out infinite}
+.dj-splash .enter-music::before,.dj-splash .enter-music::after{content:"";position:absolute;inset:0;border-radius:inherit;
+  border:2px solid rgba(167,139,250,.85);pointer-events:none;animation:djs-ring 1.9s ease-out infinite}
+.dj-splash .enter-music::after{animation-delay:.95s;border-color:rgba(236,72,153,.8)}
+.dj-splash .enter-music:hover,.dj-splash .enter-music:focus-visible{transform:scale(1.07);border-color:transparent;
+  box-shadow:0 0 36px 10px rgba(124,92,255,.95),0 0 90px 24px rgba(236,72,153,.65)}
+@keyframes djs-glow{
+  0%,100%{box-shadow:0 0 16px 3px rgba(124,92,255,.6),0 0 38px 8px rgba(236,72,153,.35);transform:scale(1)}
+  50%{box-shadow:0 0 30px 9px rgba(124,92,255,.95),0 0 72px 22px rgba(236,72,153,.65);transform:scale(1.045)}}
+@keyframes djs-ring{0%{transform:scale(1);opacity:.9}100%{transform:scale(1.5,1.9);opacity:0}}
+@keyframes djs-shift{to{background-position:220% 0}}
+@keyframes djs-note{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-3px) rotate(-12deg)}}
+
+.dj-splash .entry-status{color:#9893ae;min-height:16px;margin-top:16px}
+/* Turntables spin as soon as the page loads, each at its own speed and start angle so they never sync */
+.dj-splash .record{position:absolute;inset:0;border-radius:50%;display:grid;place-items:center}
+.dj-splash .record:before{content:"";position:absolute;inset:0;border-radius:50%;pointer-events:none;
+  background:conic-gradient(from 0deg,transparent 0 18%,rgba(255,255,255,.10) 25%,transparent 32% 68%,rgba(255,255,255,.10) 75%,transparent 82%)}
+.dj-splash .deck-left .record{animation:djs-spin 4.2s linear infinite;animation-delay:-.8s}
+.dj-splash .deck-right .record{animation:djs-spin 5.6s linear infinite;animation-delay:-2.9s}
+
+@media(max-width:480px){
+  .dj-splash .enter-button,.dj-splash .enter-music{flex:1 1 100%;min-width:0;padding:16px 20px;font-size:13px}
+  .dj-splash .brand-badge{width:52px;height:52px;margin-bottom:14px}
+  .dj-splash .brand-badge svg{width:30px;height:30px}
+}
+@media(prefers-reduced-motion:reduce){
+  .dj-splash .enter-music{box-shadow:0 0 30px 8px rgba(124,92,255,.85),0 0 70px 18px rgba(236,72,153,.5)}
+  .dj-splash .enter-music::before,.dj-splash .enter-music::after{display:none}
+}
+.dj-splash .mixer-brand{white-space:nowrap;font-size:clamp(22px,2.4vw,34px)}
+
+/* ===================================================================
+   DEPTH PASS — stage lighting, physical hardware, layered backdrop
+   Cool (indigo) light from the left, warm (pink) light from the right.
+   =================================================================== */
+.dj-splash{
+  --cool:99,102,241;      /* indigo  */
+  --cool-hi:165,180,252;
+  --warm:236,72,153;      /* pink    */
+  --warm-hi:249,168,212;
+  --noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- 1. STAGE LIGHTING ---------- */
+.dj-splash .stage{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.dj-splash .stage-haze{position:absolute;width:70vw;height:70vh;border-radius:50%;mix-blend-mode:screen;will-change:transform}
+.dj-splash .haze-l{left:-18vw;top:2%;background:radial-gradient(closest-side,rgba(var(--cool),.30),transparent);animation:djs-drift 14s ease-in-out infinite alternate}
+.dj-splash .haze-r{right:-18vw;top:6%;background:radial-gradient(closest-side,rgba(var(--warm),.26),transparent);animation:djs-drift 17s ease-in-out -6s infinite alternate-reverse}
+
+/* light cones: soft angular falloff (no blur filter), fade out along their length */
+.dj-splash .beam{position:absolute;top:-6%;width:62vw;max-width:900px;height:118%;mix-blend-mode:screen;transform-origin:50% 0;will-change:transform;
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.55) 45%,transparent 88%);mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.55) 45%,transparent 88%)}
+.dj-splash .beam-l{left:-4%;background:conic-gradient(from 162deg at 50% 0%,transparent 0deg,rgba(var(--cool),.10) 9deg,rgba(var(--cool-hi),.34) 18deg,rgba(var(--cool),.10) 27deg,transparent 36deg);
+  transform:rotate(-22deg);animation:djs-sway-l 11s ease-in-out infinite alternate}
+.dj-splash .beam-r{right:-4%;background:conic-gradient(from 162deg at 50% 0%,transparent 0deg,rgba(var(--warm),.10) 9deg,rgba(var(--warm-hi),.30) 18deg,rgba(var(--warm),.10) 27deg,transparent 36deg);
+  transform:rotate(22deg);animation:djs-sway-r 13s ease-in-out -4s infinite alternate}
+.dj-splash .beam-l.beam-thin{left:14%;width:46vw;opacity:.7;transform:rotate(-9deg);animation:djs-sway-l2 9s ease-in-out -2s infinite alternate}
+.dj-splash .beam-r.beam-thin{right:14%;width:46vw;opacity:.7;transform:rotate(9deg);animation:djs-sway-r2 10s ease-in-out -7s infinite alternate}
+@keyframes djs-sway-l{from{transform:rotate(-27deg)}to{transform:rotate(-16deg)}}
+@keyframes djs-sway-r{from{transform:rotate(27deg)}to{transform:rotate(16deg)}}
+@keyframes djs-sway-l2{from{transform:rotate(-13deg)}to{transform:rotate(-4deg)}}
+@keyframes djs-sway-r2{from{transform:rotate(13deg)}to{transform:rotate(4deg)}}
+@keyframes djs-drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(5vw,3vh,0) scale(1.12)}}
+
+/* glow spilling from the console onto the surface it sits on */
+.dj-splash .console-stage{position:relative;width:min(1180px,100%)}
+.dj-splash .console-stage .console{width:100%}
+.dj-splash .console-glow{position:absolute;z-index:-1;left:2%;right:2%;bottom:-46px;height:110px;pointer-events:none;filter:blur(30px);
+  background:radial-gradient(ellipse 34% 100% at 28% 50%,rgba(var(--cool),.55),transparent 70%),radial-gradient(ellipse 34% 100% at 72% 50%,rgba(var(--warm),.50),transparent 70%),radial-gradient(ellipse 22% 80% at 50% 50%,rgba(150,110,255,.30),transparent 70%);
+  animation:djs-spill 6s ease-in-out infinite alternate}
+@keyframes djs-spill{from{opacity:.6}to{opacity:1}}
+/* faint "table edge" under the console so the glow reads as a surface */
+.dj-splash .console-stage:after{content:"";position:absolute;left:-4%;right:-4%;bottom:-34px;height:1px;pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(var(--cool-hi),.35),rgba(var(--warm-hi),.35),transparent)}
+
+/* ---------- 2. PHYSICAL HARDWARE ---------- */
+.dj-splash .deck,.dj-splash .mixer{
+  background:
+    var(--noise),
+    repeating-linear-gradient(90deg,rgba(255,255,255,.022) 0 1px,transparent 1px 3px),
+    linear-gradient(145deg,#33323b,#111016 55%,#26252d);
+  background-size:180px 180px,auto,auto;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16),inset 1px 0 0 rgba(255,255,255,.05),inset 0 -2px 0 rgba(0,0,0,.65),inset 0 -14px 24px #0009,0 2px 0 #000,0 22px 34px -14px #000}
+.dj-splash .mixer{background:
+    var(--noise),
+    repeating-linear-gradient(90deg,rgba(255,255,255,.02) 0 1px,transparent 1px 3px),
+    linear-gradient(145deg,#2a2931,#0b0b0f 55%,#212027);
+  background-size:180px 180px,auto,auto}
+/* coloured light catching the top of each panel */
+.dj-splash .deck:after,.dj-splash .mixer:after{content:"";position:absolute;inset:0;border-radius:9px;pointer-events:none}
+.dj-splash .deck-left:after{background:linear-gradient(160deg,rgba(var(--cool-hi),.16),transparent 42%);box-shadow:inset 1px 1px 0 rgba(var(--cool-hi),.38),0 0 46px -12px rgba(var(--cool),.55)}
+.dj-splash .deck-right:after{background:linear-gradient(200deg,rgba(var(--warm-hi),.15),transparent 42%);box-shadow:inset -1px 1px 0 rgba(var(--warm-hi),.38),0 0 46px -12px rgba(var(--warm),.5)}
+.dj-splash .mixer:after{background:linear-gradient(180deg,rgba(190,170,255,.09),transparent 30%);box-shadow:inset 0 1px 0 rgba(200,190,255,.28)}
+
+/* recessed platter well + strobe ring + shadow under the tonearm */
+.dj-splash .platter{width:min(88%,270px);
+  box-shadow:0 0 0 2px #5b6370,0 0 0 5px #15181e,0 0 0 13px #0a0b0f,0 0 0 14px rgba(255,255,255,.07),0 16px 28px #000d,inset 0 0 25px #000}
+.dj-splash .record:after{content:"";position:absolute;inset:0;border-radius:50%;pointer-events:none;
+  background:repeating-conic-gradient(from 0deg,rgba(200,208,222,.6) 0 .8deg,transparent .8deg 3.6deg);
+  -webkit-mask:radial-gradient(circle,transparent calc(100% - 7px),#000 calc(100% - 6px));mask:radial-gradient(circle,transparent calc(100% - 7px),#000 calc(100% - 6px))}
+.dj-splash .deck-left .record:before{background:conic-gradient(from 0deg,transparent 0 18%,rgba(var(--cool-hi),.20) 25%,transparent 32% 68%,rgba(var(--cool-hi),.20) 75%,transparent 82%)}
+.dj-splash .deck-right .record:before{background:conic-gradient(from 0deg,transparent 0 18%,rgba(var(--warm-hi),.20) 25%,transparent 32% 68%,rgba(var(--warm-hi),.20) 75%,transparent 82%)}
+.dj-splash .tonearm{filter:drop-shadow(-7px 9px 4px rgba(0,0,0,.75))}
+.dj-splash .deck-left .vinyl-label{box-shadow:0 0 15px rgba(var(--cool),.55)}
+.dj-splash .deck-right .vinyl-label{box-shadow:0 0 15px rgba(var(--warm),.55)}
+
+/* ---------- 4. LAYERED BACKDROP ---------- */
+/* backlit crowd silhouette */
+.dj-splash .crowd{position:absolute;left:0;right:0;bottom:0;width:100%;pointer-events:none}
+.dj-splash .crowd-far{height:150px;filter:blur(3px);opacity:.85}
+.dj-splash .crowd-near{height:132px;filter:blur(1.4px)}
+.dj-splash .crowd .bob-a{animation:djs-bob 2.6s ease-in-out infinite alternate}
+.dj-splash .crowd .bob-b{animation:djs-bob 3.1s ease-in-out -1s infinite alternate}
+.dj-splash .crowd .bob-c{animation:djs-bob 2.9s ease-in-out -2s infinite alternate}
+@keyframes djs-bob{from{transform:translateY(0)}to{transform:translateY(-4px)}}
+.dj-splash .stage-floor{position:absolute;left:0;right:0;bottom:0;height:260px;
+  background:radial-gradient(ellipse 60% 100% at 25% 100%,rgba(var(--cool),.34),transparent 70%),radial-gradient(ellipse 60% 100% at 75% 100%,rgba(var(--warm),.30),transparent 70%)}
+
+/* vignette over everything */
+.dj-splash .vignette{position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(ellipse 85% 75% at 50% 46%,transparent 52%,rgba(0,0,0,.62) 100%)}
+
+@media(max-width:800px){
+  .dj-splash .beam{width:100vw}
+  .dj-splash .crowd-far{height:110px}
+  .dj-splash .crowd-near{height:96px}
+  .dj-splash .platter{width:min(88%,250px)}
+}
+@media(max-width:600px){
+  
+  .dj-splash .console-glow{height:70px;bottom:-30px}
+}
+
+/* ===================================================================
+   DISCO BALL — headroom for the ball, sparkles, and the party pulse
+   (ball adapted from Lucy Bichakhchyan's disco ball; see src/lib/discoBall.js)
+   =================================================================== */
+/* The ball replaces the logo badge at the top: leave it room to hang above the intro. */
+.dj-splash .splash{padding-top:16px}
+.dj-splash .intro{margin-top:150px}
+@media(max-width:480px){.dj-splash .intro{margin-top:140px}}
+
+/* party mode: a coloured wash that swells at the start of every bar */
+.dj-splash .room-wrap{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .8s ease}
+.dj-splash.music .room-wrap{opacity:1}
+.dj-splash .room{position:absolute;inset:0;background:var(--room,#6B2BD9);opacity:calc(.05 + var(--pulse,0)*.16);transition:background-color .6s ease}
+
+
+/* ===================================================================
+   PERFORMANCE PASS
+   Only transform / opacity animate; no blend modes, no filters over moving content.
+   =================================================================== */
+/* a filter on the console re-rendered the whole console every frame while the records spin;
+   each panel already has its own static shadow */
+.dj-splash .console{filter:none}
+
+/* blend modes force the whole splash to be re-composited every frame: plain alpha looks the same on this dark background */
+.dj-splash .stage-haze,.dj-splash .beam{mix-blend-mode:normal}
+.dj-splash .beam{-webkit-mask-image:none;mask-image:none;height:100%}
+
+/* blurs on animated layers are re-computed every frame: use soft gradients instead */
+.dj-splash .console-glow{filter:none}
+.dj-splash .enter-quiet{backdrop-filter:none;background:rgba(255,255,255,.07)}
+
+/* the crowd used to animate inside the SVG (repainting + re-blurring it every frame); now the whole layer just moves */
+.dj-splash .crowd .bob-a,.dj-splash .crowd .bob-b,.dj-splash .crowd .bob-c{animation:none}
+.dj-splash .crowd-far{will-change:transform;animation:djs-bob 3.1s ease-in-out infinite alternate}
+.dj-splash .crowd-near{will-change:transform;animation:djs-bob 2.6s ease-in-out -1.2s infinite alternate}
+
+/* records spin on the compositor */
+.dj-splash .record{will-change:transform}
+
+/* the mixer bars: no animated filter */
+@keyframes djs-equalize{0%{transform:scaleY(.25)}25%{transform:scaleY(.85)}50%{transform:scaleY(.4)}75%{transform:scaleY(1)}100%{transform:scaleY(.55)}}
+
+/* "Enter With Music": the glow used to animate box-shadow (a full repaint every frame) plus a
+   moving gradient. Now the shadow is painted once and only opacity / transform animate. */
+.dj-splash .enter-music{box-shadow:0 0 18px 3px rgba(124,92,255,.55),0 0 40px 8px rgba(236,72,153,.3);animation:djs-breathe 1.9s ease-in-out infinite}
+.dj-splash .enter-music::after{border:0;animation:djs-glowfade 1.9s ease-in-out infinite;animation-delay:0s;
+  box-shadow:0 0 30px 9px rgba(124,92,255,.9),0 0 70px 20px rgba(236,72,153,.6)}
+.dj-splash .enter-music:hover,.dj-splash .enter-music:focus-visible{box-shadow:0 0 28px 8px rgba(124,92,255,.8),0 0 64px 16px rgba(236,72,153,.5)}
+@keyframes djs-breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
+@keyframes djs-glowfade{0%,100%{opacity:.15}50%{opacity:1}}
+
+/* party wash: opacity is set from JS on this one element */
+.dj-splash .room{opacity:.05;will-change:opacity}
+
+/* "Enter With Music": hold on the party, then fade out slowly (no blur, so the beams stay crisp as it goes) */
+.dj-splash.music{transition:opacity 1.2s ease,transform 1.2s ease}
+.dj-splash.music.leaving{filter:none;transform:scale(1.02)}
+.dj-splash .room-wrap{transition:opacity .4s ease}
+
+/* ===================================================================
+   TWINKLING LIGHTS
+   Small points of light that fade up and down at their own pace. Only opacity and
+   transform animate, and each light's glow is painted once, so they are cheap.
+   =================================================================== */
+.dj-splash .twinkles{position:absolute;inset:0;pointer-events:none}
+.dj-splash .twinkles-front{z-index:1}                 /* a few sit in front of the content */
+.dj-splash .twinkle{position:absolute;width:var(--s);height:var(--s);margin:calc(var(--s)/-2) 0 0 calc(var(--s)/-2);
+  border-radius:50%;background:var(--c);box-shadow:0 0 calc(var(--s)*2.4) calc(var(--s)*.45) var(--g);
+  opacity:.1;will-change:opacity,transform;animation:djs-tw var(--d) ease-in-out var(--delay) infinite}
+/* the bigger ones are four-pointed stars with a soft glow behind them */
+.dj-splash .twinkle.star{background:radial-gradient(circle,var(--g) 0,transparent 68%);box-shadow:none;border-radius:0;
+  width:calc(var(--s)*3.4);height:calc(var(--s)*3.4);margin:calc(var(--s)*-1.7) 0 0 calc(var(--s)*-1.7)}
+.dj-splash .twinkle.star:after{content:"";position:absolute;left:50%;top:50%;width:var(--s);height:var(--s);margin:calc(var(--s)/-2) 0 0 calc(var(--s)/-2);
+  background:var(--c);clip-path:polygon(50% -45%,60% 40%,145% 50%,60% 60%,50% 145%,40% 60%,-45% 50%,40% 40%)}
+/* two flickers per cycle so they don't pulse like a metronome */
+@keyframes djs-tw{
+  0%,100%{opacity:.08;transform:scale(.55)}
+  10%{opacity:1;transform:scale(1)}
+  22%{opacity:.25;transform:scale(.7)}
+  56%{opacity:.12;transform:scale(.6)}
+  68%{opacity:.9;transform:scale(.95)}
+  80%{opacity:.2;transform:scale(.65)}
+}
+@media(prefers-reduced-motion:reduce){
+  .dj-splash .twinkle{animation:none;opacity:.55;transform:none}
+}

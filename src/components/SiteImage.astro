@@ -1,0 +1,52 @@
+---
+/**
+ * Image with explicit size (no layout shift), lazy loading and async decoding.
+ *
+ * - `src` starting with http(s) is used as-is (e.g. the Pexels placeholders in config.ts).
+ * - `src` that is a file inside src/assets/ (e.g. "events/wedding.jpg") is run through
+ *   Astro's image pipeline at build time: resized, converted to WebP and self-hosted.
+ *   To self-host an image, drop it in src/assets/ and change its path in config.ts.
+ */
+import { Image } from "astro:assets";
+
+interface Props {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  class?: string;
+  eager?: boolean;
+}
+const { src, alt, width, height, class: className = "", eager = false } = Astro.props;
+
+const local = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/**/*.{jpg,jpeg,png,webp,avif}",
+  { eager: true },
+);
+const asset = /^https?:\/\//.test(src) ? undefined : local[`/src/assets/${src.replace(/^\//, "")}`]?.default;
+---
+
+{
+  asset ? (
+    <Image
+      src={asset}
+      alt={alt}
+      width={width}
+      height={height}
+      class={className}
+      format="webp"
+      loading={eager ? "eager" : "lazy"}
+      decoding="async"
+    />
+  ) : (
+    <img
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      class={className}
+      loading={eager ? "eager" : "lazy"}
+      decoding="async"
+    />
+  )
+}

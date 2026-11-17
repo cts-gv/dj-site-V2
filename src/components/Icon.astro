@@ -1,0 +1,35 @@
+---
+/**
+ * Inline SVG icon from lucide-static (rendered at build time: no icon JavaScript ships).
+ * Pass the name in kebab-case ("shield-check") or PascalCase ("ShieldCheck").
+ * To use a new icon, add its file name to the glob list below.
+ */
+const icons = import.meta.glob(
+  "/node_modules/lucide-static/icons/{calendar,music,music-2,award,smile,clock,mic,sparkles,headphones,shield-check,phone,mail,instagram,facebook,heart,menu,x,chevron-down,send,circle-check,loader-circle,circle-alert,users}.svg",
+  { query: "?raw", import: "default", eager: true },
+) as Record<string, string>;
+
+interface Props {
+  name: string;
+  class?: string;
+}
+const { name, class: className = "" } = Astro.props;
+
+const key = name.replace(/([a-z])([A-Z0-9])/g, "$1-$2").toLowerCase();
+const raw = icons[`/node_modules/lucide-static/icons/${key}.svg`] ?? icons["/node_modules/lucide-static/icons/music.svg"];
+const inner = raw.match(/<svg[^>]*>([\s\S]*)<\/svg>/)?.[1] ?? "";
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class={className}
+  aria-hidden="true"
+  focusable="false"
+  set:html={inner}
+/>

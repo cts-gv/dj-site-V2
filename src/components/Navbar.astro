@@ -1,0 +1,131 @@
+---
+import DjIcon from "@/components/DjIcon.astro";
+import Icon from "@/components/Icon.astro";
+import { siteConfig } from "@/config";
+
+const navLinks = [
+  { label: "About", href: "#about" },
+  { label: "Stats", href: "#stats" },
+  { label: "Services", href: "#services" },
+  { label: "Portfolio", href: "#portfolio" },
+  { label: "Why Us", href: "#why-us" },
+  { label: "Contact", href: "#contact" },
+];
+---
+
+<header
+  id="site-header"
+  data-scrolled="false"
+  class="fixed top-0 left-0 right-0 z-50 bg-transparent py-5 transition-all duration-500 data-[scrolled=true]:bg-black/90 data-[scrolled=true]:py-3 data-[scrolled=true]:shadow-lg data-[scrolled=true]:shadow-black/50 data-[scrolled=true]:backdrop-blur-md"
+>
+  <nav class="max-w-7xl mx-auto px-6 flex items-center justify-between" aria-label="Main">
+    <a href="#hero" class="flex items-center gap-2 group" aria-label={`${siteConfig.djName} - back to top`}>
+      <span class="relative flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 to-pink-500 shadow-lg shadow-violet-500/30 transition-transform group-hover:scale-110">
+        <DjIcon class="h-6 w-6" idSuffix="nav" />
+      </span>
+      <span class="text-xl font-bold tracking-tight text-white">{siteConfig.djName}</span>
+    </a>
+
+    <!-- Desktop nav -->
+    <ul class="hidden lg:flex items-center gap-8">
+      {navLinks.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class="text-sm font-medium text-gray-300 hover:text-violet-400 transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-violet-400 after:transition-all hover:after:w-full"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <div class="hidden lg:flex items-center gap-3">
+      <button
+        type="button"
+        data-play-music
+        class="js-only inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2.5 text-sm font-medium text-gray-200 transition hover:border-white/40 hover:bg-white/10"
+      >
+        <Icon name="music-2" class="h-4 w-4" /> Play music
+      </button>
+      <a
+        href="#contact"
+        class="inline-flex items-center rounded-full bg-gradient-to-r from-violet-500 to-pink-500 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-violet-500/30 transition-all hover:shadow-violet-500/50 hover:scale-105"
+      >
+        Book Now
+      </a>
+    </div>
+
+    <!-- Mobile buttons -->
+    <div class="lg:hidden flex items-center">
+      <button type="button" data-play-music class="js-only text-white p-2" aria-label="Play music">
+        <Icon name="music-2" class="h-5 w-5" />
+      </button>
+      <button
+        type="button"
+        id="menu-toggle"
+        class="js-only text-white p-2"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <Icon name="menu" class="h-6 w-6" />
+        <Icon name="x" class="hidden h-6 w-6" />
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    data-open="false"
+    class="lg:hidden overflow-hidden max-h-0 opacity-0 transition-all duration-300 data-[open=true]:max-h-[28rem] data-[open=true]:opacity-100"
+  >
+    <ul class="flex flex-col gap-1 px-6 py-4 bg-black/95 backdrop-blur-md">
+      {navLinks.map((link) => (
+        <li>
+          <a href={link.href} class="block w-full py-3 text-gray-300 hover:text-violet-400 transition-colors border-b border-white/5">
+            {link.label}
+          </a>
+        </li>
+      ))}
+      <li>
+        <a href="#contact" class="mt-3 block w-full rounded-full bg-gradient-to-r from-violet-500 to-pink-500 px-6 py-3 text-center text-sm font-semibold text-white">
+          Book Now
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  import * as audio from "@/lib/audio";
+
+  const header = document.getElementById("site-header")!;
+  const onScroll = () => (header.dataset.scrolled = String(window.scrollY > 40));
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  // Mobile menu
+  const menu = document.getElementById("mobile-menu")!;
+  const toggle = document.getElementById("menu-toggle")!;
+  const [iconOpen, iconClose] = Array.from(toggle.querySelectorAll("svg"));
+  const setOpen = (open: boolean) => {
+    menu.dataset.open = String(open);
+    menu.toggleAttribute("inert", !open); // closed menu links are not tabbable
+    toggle.setAttribute("aria-expanded", String(open));
+    iconOpen.classList.toggle("hidden", open);
+    iconClose.classList.toggle("hidden", !open);
+  };
+  setOpen(false);
+  toggle.addEventListener("click", () => setOpen(menu.dataset.open !== "true"));
+  menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setOpen(false)));
+
+  // "Play music" buttons disappear once music has started (the dock takes over)
+  const playButtons = document.querySelectorAll<HTMLElement>("[data-play-music]");
+  playButtons.forEach((b) => b.addEventListener("click", () => audio.toggle()));
+  audio.subscribe(() => {
+    const started = audio.getState().hasStarted;
+    playButtons.forEach((b) => b.classList.toggle("!hidden", started));
+  });
+</script>

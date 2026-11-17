@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Height of the bottom music dock (player + equalizer). */
+:root {
+  --dock-h: 100px;
+}
+@media (min-width: 640px) {
+  :root {
+    --dock-h: 72px;
+  }
+}
+@keyframes dockIn {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+.dock-in {
+  animation: dockIn 0.5s ease-out both;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* keeps anchor targets clear of the fixed header */
+    scroll-padding-top: 72px;
+  }
+
+  body {
+    background-color: #000;
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    transition: padding-bottom 0.7s;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: #0a0a0a; }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #7c5cff, #ec4899);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #6d4ae8, #db2777);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+}
+
+/* ------------------------------------------------------------------
+ * Splash screen state (progressive enhancement)
+ *
+ * The page below is ordinary HTML that crawlers and no-JS visitors see
+ * immediately. The splash is an overlay that only exists when JavaScript runs:
+ *   <html class="js splash-pending">  set by an inline script in <head>
+ *   + splash-mounted                  added once the splash island is on screen
+ *   - splash-pending, + splash-done   after the visitor enters
+ * ------------------------------------------------------------------ */
+
+/* Reserve space for the dock once music has started (the dock is fixed). */
+html.music-started body { padding-bottom: var(--dock-h); }
+
+/* JS is running and the splash is coming: show black (not the page) until it mounts. */
+html.splash-pending:not(.splash-mounted) #page { visibility: hidden; }
+html.splash-pending { overflow: hidden; }
+
+/* Hold the hero's draw-on animation until the splash has gone. */
+html.splash-pending #hero .draw-logo,
+html.splash-pending #hero .draw-logo *,
+html.splash-pending #hero .hero-fade-in,
+html.splash-pending #hero .hero-fade-in * {
+  animation-play-state: paused !important;
+}
+
+/* Things that only make sense with JavaScript. */
+html:not(.js) .js-only { display: none !important; }
+/* Mobile menu stays open (as a plain list) without JavaScript. */
+html:not(.js) #mobile-menu { max-height: 24rem; opacity: 1; }

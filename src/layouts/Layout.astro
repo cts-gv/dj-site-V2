@@ -1,0 +1,99 @@
+---
+import "@fontsource/oswald/700.css";
+import "@/styles/global.css";
+import "@/styles/splash.css";
+import "@/styles/hero.css";
+import { siteConfig } from "@/config";
+
+// `splash` is true only on pages that mount the entry splash (the home page).
+const { splash = false } = Astro.props;
+const site = Astro.site ?? new URL("https://dj-mando.com");
+const canonical = new URL(Astro.url.pathname, site).href;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
+const abs = (path: string) => new URL(base + path.replace(/^\//, ""), site).href;
+
+const { seo } = siteConfig;
+const title = seo.title;
+const description = seo.description;
+const ogImage = abs(seo.ogImage);
+const phoneE164 = "+1" + siteConfig.phone.replace(/\D/g, "");
+
+// LocalBusiness structured data: built from config.ts so it can never drift from the page.
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "EntertainmentBusiness",
+  "@id": `${canonical}#business`,
+  name: siteConfig.djName,
+  url: canonical,
+  description,
+  image: ogImage,
+  logo: abs("favicon.svg"),
+  telephone: phoneE164,
+  email: siteConfig.email,
+  areaServed: siteConfig.serviceAreas.map((name) => ({
+    "@type": "City",
+    name: `${name}, WA`,
+  })),
+  sameAs: [siteConfig.instagram, siteConfig.facebook, siteConfig.tiktok],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "DJ services",
+    itemListElement: siteConfig.services.map((s) => ({
+      "@type": "Offer",
+      itemOffered: { "@type": "Service", name: s.title, description: s.text },
+    })),
+  },
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Runs before first paint: marks that JS is available and that the splash is coming.
+         The 6s fallback guarantees the page is never left hidden if the splash fails to load. -->
+    <script is:inline define:vars={{ splash }}>
+      (function () {
+        var d = document.documentElement;
+        d.classList.add("js");
+        if (!splash) return;
+        d.classList.add("splash-pending");
+        setTimeout(function () {
+          if (!d.classList.contains("splash-mounted")) d.classList.remove("splash-pending");
+        }, 6000);
+      })();
+    </script>
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#000000" />
+
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <link rel="apple-touch-icon" href={`${base}apple-touch-icon.png`} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteConfig.djName} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={seo.ogImageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={seo.ogImageAlt} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

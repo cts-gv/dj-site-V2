@@ -1,0 +1,97 @@
+---
+import Icon from "@/components/Icon.astro";
+import SiteImage from "@/components/SiteImage.astro";
+import { siteConfig } from "@/config";
+
+const categories = ["All", ...new Set(siteConfig.events.map((e) => e.category))];
+---
+
+<section id="portfolio" class="relative py-24 md:py-32 bg-black overflow-hidden">
+  <div class="absolute top-1/4 left-0 h-80 w-80 rounded-full bg-pink-500/5 blur-3xl"></div>
+  <div class="absolute bottom-1/4 right-0 h-80 w-80 rounded-full bg-violet-500/5 blur-3xl"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <p class="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-violet-400">Past Events</p>
+      <h2 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight">Event Portfolio</h2>
+      <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
+        A glimpse into the celebrations we've had the honor of soundtracking.
+      </p>
+    </div>
+
+    <!-- Category filter (needs JavaScript; without it every event simply stays visible) -->
+    <div id="portfolio-filters" class="js-only flex flex-wrap justify-center gap-3 mb-12" role="group" aria-label="Filter events by type">
+      {categories.map((cat, i) => (
+        <button
+          type="button"
+          data-filter={cat}
+          aria-pressed={i === 0 ? "true" : "false"}
+          class="rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-semibold text-gray-400 transition-all hover:border-white/20 hover:text-white aria-pressed:border-transparent aria-pressed:bg-gradient-to-r aria-pressed:from-violet-500 aria-pressed:to-pink-500 aria-pressed:text-white aria-pressed:shadow-lg aria-pressed:shadow-violet-500/30"
+        >
+          {cat}
+        </button>
+      ))}
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {siteConfig.events.map((event) => (
+        <article
+          data-category={event.category}
+          class="group relative overflow-hidden rounded-2xl border border-white/10 bg-neutral-900 transition-colors hover:border-violet-500/40"
+        >
+          <div class="relative h-56 overflow-hidden">
+            <SiteImage
+              src={event.image}
+              alt={`${event.title}: ${event.category} event DJ`}
+              width={800}
+              height={600}
+              class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-neutral-900 via-neutral-900/20 to-transparent transform-gpu pointer-events-none"></div>
+            <span class="absolute top-4 left-4 rounded-full bg-violet-500/90 px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
+              {event.category}
+            </span>
+          </div>
+
+          <div class="p-5">
+            <div class="mb-2 flex items-center gap-2 text-xs text-gray-500">
+              <Icon name="calendar" class="h-3.5 w-3.5" />
+              {event.date}
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">{event.title}</h3>
+            <p class="text-sm text-gray-400 leading-relaxed mb-4">{event.description}</p>
+
+            <div class="flex items-center gap-5 border-t border-white/10 pt-4">
+              <div class="flex items-center gap-2 text-sm text-gray-300">
+                <Icon name="music-2" class="h-4 w-4 text-violet-400" />
+                <span class="font-bold text-white">{event.songsPlayed}</span>
+                <span class="text-gray-500">songs</span>
+              </div>
+              <div class="flex items-center gap-2 text-sm text-gray-300">
+                <Icon name="users" class="h-4 w-4 text-pink-400" />
+                <span class="font-bold text-white">{event.guests}</span>
+                <span class="text-gray-500">guests</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  const wrap = document.getElementById("portfolio-filters");
+  const cards = document.querySelectorAll<HTMLElement>("#portfolio article[data-category]");
+  const buttons = wrap?.querySelectorAll<HTMLButtonElement>("button[data-filter]") ?? [];
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const filter = btn.dataset.filter;
+      buttons.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+      cards.forEach((card) => {
+        card.hidden = filter !== "All" && card.dataset.category !== filter;
+      });
+    });
+  });
+</script>
