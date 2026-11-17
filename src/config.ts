@@ -67,8 +67,8 @@ export const siteConfig = {
 
   // --- Hero Video ---
   // Video plays as the hero section background. Poster shows before video loads.
-  heroVideoUrl: "/video/hero.mp4", // file in /public/video
-  heroPosterImage: "/images/hero-poster.jpg", // first frame of the video, in /public/images
+  heroVideoUrl: `${import.meta.env.BASE_URL}video/hero.mp4`, // file in /public/video
+  heroPosterImage: `${import.meta.env.BASE_URL}images/hero-poster.jpg`, // first frame of the video, in /public/images
 
   // --- About Section ---
   aboutImage: "https://images.pexels.com/photos/19641136/pexels-photo-19641136.jpeg?auto=compress&cs=tinysrgb&w=900",
