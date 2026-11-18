@@ -203,8 +203,22 @@ export type SiteConfig = typeof siteConfig;
 // `src` is relative to the site root (no leading slash).
 // Tracks shuffle automatically; one song never plays on repeat.
 // The tracks below are original placeholder music.
+//
+// Clips: every track plays only a short clip, then fades out and the next one fades in.
+//   startSeconds  - where in the song the clip begins (default for all tracks)
+//   lengthSeconds - how long each clip plays, no matter how long the file is
+//   fadeSeconds   - length of the fade-in and the fade-out
+// A track can override the start with its own `start` (in seconds), e.g.
+//   { title: "My Mix", artist: "DJ-Mando", src: "audio/my-mix.mp3", start: 62 }
+// If a file is shorter than start + length, the clip is moved earlier so it still fits.
 // ============================================================
-export const musicTracks: { title: string; artist: string; src: string }[] = [
+export const musicClip = {
+  startSeconds: 30,
+  lengthSeconds: 10,
+  fadeSeconds: 1.5,
+};
+
+export const musicTracks: { title: string; artist: string; src: string; start?: number }[] = [
   { title: "Neon Nights", artist: "DJ-Mando (placeholder)", src: "audio/neon-nights.mp3" },
   { title: "Golden Hour", artist: "DJ-Mando (placeholder)", src: "audio/golden-hour.mp3" },
   { title: "Block Party", artist: "DJ-Mando (placeholder)", src: "audio/block-party.mp3" },
