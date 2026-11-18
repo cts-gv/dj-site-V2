@@ -8,7 +8,7 @@ export default defineConfig({
   // social-share links, sitemap.xml and robots.txt.
   site: "https://cts-gv.github.io",
   // Use "/" for a custom domain. For https://<user>.github.io/<repo>/ use "/<repo>".
-  base: "dj-site-V2",
+  base: "/dj-site-V2/",
   integrations: [react(), sitemap()],
   vite: {
     build: {
