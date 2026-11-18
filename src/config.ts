@@ -219,9 +219,9 @@ export const musicClip = {
 };
 
 export const musicTracks: { title: string; artist: string; src: string; start?: number }[] = [
-  { title: "Neon Nights", artist: "DJ-Mando (placeholder)", src: "audio/neon-nights.mp3" },
-  { title: "Golden Hour", artist: "DJ-Mando (placeholder)", src: "audio/golden-hour.mp3" },
-  { title: "Block Party", artist: "DJ-Mando (placeholder)", src: "audio/block-party.mp3" },
-  { title: "Midnight Drive", artist: "DJ-Mando (placeholder)", src: "audio/midnight-drive.mp3" },
+  { title: "Neon Nights", artist: "DJ-Mando (placeholder)", src: "audio/mix1.mp3" },
+  { title: "Golden Hour", artist: "DJ-Mando (placeholder)", src: "audio/mix2.mp3" },
+  { title: "Block Party", artist: "DJ-Mando (placeholder)", src: "audio/mix3.mp3" },
+  { title: "Midnight Drive", artist: "DJ-Mando (placeholder)", src: "audio/mix4.mp3" },
   { title: "Fiesta Latina", artist: "DJ-Mando (placeholder)", src: "audio/fiesta-latina.mp3" },
 ];
