@@ -214,7 +214,7 @@ export type SiteConfig = typeof siteConfig;
 // ============================================================
 export const musicClip = {
   startSeconds: 30,
-  lengthSeconds: 10,
+  lengthSeconds: 20,
   fadeSeconds: 1.5,
 };
 
