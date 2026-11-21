@@ -70,6 +70,11 @@ export const siteConfig = {
   heroVideoUrl: `${import.meta.env.BASE_URL}video/hero.mp4`, // file in /public/video
   heroPosterImage: `${import.meta.env.BASE_URL}images/hero-poster.jpg`, // first frame of the video, in /public/images
 
+  // --- Music ---
+  // How loud the music is when it starts: 0 (silent) to 1 (full volume).
+  // Visitors can still change it with the volume slider (on phones they use their own volume buttons).
+  musicStartVolume: 0.1,
+
   // --- About Section ---
   aboutImage: "https://images.pexels.com/photos/19641136/pexels-photo-19641136.jpeg?auto=compress&cs=tinysrgb&w=900",
   aboutTitle: "About DJ-Mando",

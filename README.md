@@ -82,3 +82,7 @@ frame, so the fade from poster to video is seamless). To replace the video, re-e
 
     ffmpeg -i input.mp4 -an -c:v libx264 -preset slow -crf 26 -profile:v high -pix_fmt yuv420p -vf "scale=1920:-2" -movflags +faststart hero.mp4
     ffmpeg -i hero.mp4 -frames:v 1 -q:v 5 hero-poster.jpg
+
+## Music volume
+The starting volume is `musicStartVolume` in `src/config.ts` (0 = silent, 1 = full). The volume is applied with a Web Audio
+gain node (see `src/lib/audio.ts`) because iOS ignores `audio.volume`; if Web Audio is unavailable it falls back to `audio.volume`.

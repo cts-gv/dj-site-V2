@@ -1,4 +1,4 @@
-import { musicTracks, musicClip } from "@/config";
+import { musicTracks, musicClip, siteConfig } from "@/config";
 
 /**
  * Site-wide music engine (no framework).
@@ -28,7 +28,7 @@ let state: AudioState = {
   isPlaying: false,
   hasStarted: false,
   muted: false,
-  volume: 0.1,
+  volume: Math.min(1, Math.max(0, siteConfig.musicStartVolume)),
   shuffle: true,
   analyser: null,
 };
@@ -49,7 +49,8 @@ const resolve = (src: string) => `${BASE}${src.replace(/^\//, "")}`;
 
 let audio: HTMLAudioElement | null = null;
 let ctx: AudioContext | null = null;
-let gain: GainNode | null = null;
+let gain: GainNode | null = null; // clip fade in / fade out
+let volGain: GainNode | null = null; // the visitor's volume (a gain node, because iOS ignores audio.volume)
 let bag: number[] = [];
 const history: number[] = [];
 
@@ -108,7 +109,7 @@ function getAudio(): HTMLAudioElement {
   if (audio) return audio;
   const a = new Audio();
   a.preload = "auto";
-  a.volume = state.volume;
+  a.volume = state.volume; // replaced by the volume gain node once Web Audio is set up (iOS ignores this property)
   a.muted = state.muted;
   a.addEventListener("play", () => {
     set({ isPlaying: true, hasStarted: true });
@@ -167,11 +168,17 @@ function ensureAnalyser() {
     const node = c.createAnalyser();
     node.fftSize = 512;
     node.smoothingTimeConstant = 0.72;
+    // Volume sits last, after the analyser, so the equalizer looks the same at any volume.
+    const vg = c.createGain();
+    vg.gain.value = state.volume;
     src.connect(g);
     g.connect(node);
-    node.connect(c.destination);
+    node.connect(vg);
+    vg.connect(c.destination);
+    a.volume = 1; // the volume gain node does the volume now (using both would apply it twice)
     ctx = c;
     gain = g;
+    volGain = vg;
     set({ analyser: node });
     if (c.state === "suspended") void c.resume();
   } catch {
@@ -237,10 +244,12 @@ export function toggleMute() {
 }
 
 export function setVolume(v: number) {
-  if (audio) {
+  if (volGain && ctx) {
+    volGain.gain.setTargetAtTime(v, ctx.currentTime, 0.02); // short ramp, so no clicks
+  } else if (audio) {
     audio.volume = v;
-    if (v > 0) audio.muted = false;
   }
+  if (audio && v > 0) audio.muted = false;
   set({ volume: v, ...(v > 0 ? { muted: false } : {}) });
 }
 
