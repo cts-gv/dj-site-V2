@@ -28,7 +28,7 @@ let state: AudioState = {
   isPlaying: false,
   hasStarted: false,
   muted: false,
-  volume: 0.25,
+  volume: 0.1,
   shuffle: true,
   analyser: null,
 };
